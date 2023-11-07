@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<h:outputStylesheet library="css" name="file.css" />
+
+	<title>Entrada de Texto</title>
+</h:head>
+<h:body>
+
+	<h1>Select one Radio</h1>
+
+	<h:form id="form">
+		<p:panelGrid columns="2">
+			<p:selectOneRadio id="tipoPessoa" value="#{clienteMB.tipoPessoa}">
+				<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+				<f:selectItem itemLabel="PS4" itemValue="PS4" />
+				<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				<p:ajax event="click" update="input" process="@this" />
+			</p:selectOneRadio>
+
+			<h:panelGroup id="input">
+				<p:inputMask mask="999.999.999-99" value="CPF" id="cpf" rendered="#{clienteMB.tipoPessoa eq 'FISICA' }" required="true" />
+				<p:inputMask mask="99.999.999/9999-99" value="CNPJ" id="cnpj" rendered="#{clienteMB.tipoPessoa eq 'JURIDICA' }" required="true" />
+			</h:panelGroup>
+
+		</p:panelGrid>
+	</h:form>
+
+</h:body>
+</html>
