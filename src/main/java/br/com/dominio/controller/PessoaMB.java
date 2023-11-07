@@ -30,6 +30,14 @@ public class PessoaMB implements Serializable {
 		return null;
 	}
 	
+	public boolean isDisabled() {
+		return false;
+	}
+	
+	public boolean isRequired() {
+		return true;
+	}
+	
 	private void limpar() {
 		pessoa = new Pessoa();
 	}

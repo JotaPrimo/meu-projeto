@@ -37,8 +37,6 @@
 			<artifactId>jandex</artifactId>
 			<version>2.2.3.Final</version>
 		</dependency>
-
-
 	</dependencies>
 
 	<build>
