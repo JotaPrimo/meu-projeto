@@ -25,9 +25,10 @@ public class PessoaMB implements Serializable {
 		
 		pessoas.add(pessoa);
 		
-		limpar();
+		// limpando a model de pessoa
+		limpar(); 
 		
-		return null;
+		return "paginas/Sucesso";
 	}
 	
 	public boolean isDisabled() {

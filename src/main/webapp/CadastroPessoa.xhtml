@@ -19,11 +19,11 @@
 		<p:panel>
 			<h:panelGrid columns="2">
 				<p:outputLabel value="Nome" />
-				<p:inputText value="#{pessoaBean.pessoa.nome}" required="true" size="50"
+				<p:inputText value="#{pessoaBean.pessoa.nome}" size="50"
 					requiredMessage="Informe o nome" />
 
 				<p:outputLabel value="E-mail" />
-				<p:inputText value="#{pessoaBean.pessoa.email}" required="true" size="50"
+				<p:inputText value="#{pessoaBean.pessoa.email}"  size="50"
 					requiredMessage="Informe o e-mail" />
 
 				<p:commandButton value="Salvar" action="#{pessoaBean.adicionar}"
