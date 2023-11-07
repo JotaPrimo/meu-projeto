@@ -15,11 +15,11 @@
 
 	<h1>Campos de entrada de texto</h1>
 	<h:form>
-		<p:panelGrid>
+		<p:panelGrid columns="2">
 			<h:outputText value="Evento" />
 
 			<p:selectOneMenu value="#{atividadeMB.atividade.tipoAtividade}" filter="true">
-				<f:selectItems value="#{atividadeMB.atividades}" var="a" itemValue="#{a}" itemLabel="#{a.descricao}" />
+				<f:selectItems value="#{atividadeMB.atividades}" var="a" itemValue="#{a}" itemLabel="#{a}" />
 			</p:selectOneMenu>
 
 
