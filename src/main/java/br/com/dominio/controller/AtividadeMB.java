@@ -18,9 +18,9 @@ public class AtividadeMB implements Serializable {
 	@Inject
 	private Atividade atividade;
 
-//	public TipoAtividade[] getAtividades() {
-//		return TipoAtividade.values();
-//	}
+	public TipoAtividade[] getAtividades() {
+		return TipoAtividade.values();
+	}
 	
 	public Atividade getAtividade() {
 		return atividade;
