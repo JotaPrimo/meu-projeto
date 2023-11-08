@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<h:outputStylesheet library="css" name="file.css" />
+
+	<title>Entrada de Texto</title>
+</h:head>
+<h:body>
+	<h1>Select one Radio</h1>
+	<p:messages id="messages" autoUpdate="true" showDetail="true" closable="true" />
+
+	<h:form id="form">
+		<p:commandButton value="Info" action="#{messageMB.info}" />
+		<p:commandButton value="Warn" action="#{messageMB.warn}" />
+		<p:commandButton value="Error" action="#{messageMB.error}" />
+		<p:commandButton value="Fatal" action="#{messageMB.fatal}" />
+	</h:form>
+
+</h:body>
+</html>
