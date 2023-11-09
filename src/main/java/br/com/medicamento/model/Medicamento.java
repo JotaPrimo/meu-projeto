@@ -26,6 +26,8 @@ public class Medicamento implements Serializable, Base {
 	
 	private String laboratorio;
 	
+	private String registro;
+	
 	private BigDecimal preco;
 
 	@Override
@@ -85,6 +87,14 @@ public class Medicamento implements Serializable, Base {
 
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
+	}
+
+	public String getRegistro() {
+		return registro;
+	}
+
+	public void setRegistro(String registro) {
+		this.registro = registro;
 	}
 
 	

@@ -32,29 +32,33 @@ public class MedicamentoMB implements Serializable {
 		medicamentos = medicamentoService.todosOsMedicamentos();
 	}
 
-	public void adicionar() {
+	public String adicionar() {
 		try {
 			medicamentoService.salvar(medicamento);
 			medicamento = new Medicamento();
 			medicamentos = medicamentoService.todosOsMedicamentos();
 
 			Message.info("Medicamento adicionado com sucesso");
+			return "";
 
 		} catch (NegocioException negocioException) {
 			Message.error(negocioException.getMessage());
+			return "";
 		}
 	}
 
-	public void excluir() {
+	public String excluir() {
 		try {
 			medicamentoService.remover(medicamento);
 
 			medicamentos = medicamentoService.todosOsMedicamentos();
 
 			Message.info("Medicamento removido com sucesso");
+			return "";
 
 		} catch (NegocioException negocioException) {
 			Message.error(negocioException.getMessage());
+			return "";
 		}
 	}
 
