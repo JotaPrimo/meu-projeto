@@ -7,7 +7,7 @@
 
 	<ui:define name="corpo">
 
-		<h:form id="formMedicamento">
+		<h:form id="frm">
 			<p:messages autoUpdate="true" />
 
 			<p:panelGrid columns="2">
@@ -51,61 +51,59 @@
 
 				<p:commandButton value="Cadastrar"
 					action="#{medicamentoMB.adicionar}" style="margin-top: 10px;"
-					update="" />
+					update="frm tabela" />
 
-
-
-				<p:dataTable id="listMedicamentos" var="medicamento"
-					paginator="true" rows="5" value="#{medicamentoMB.medicamentos}"
-					rowKey="#{medicamentoMB.id}" selectionMode="single">
-					<f:facet name="header">
-		                Listagem dos medicamentos
-		            </f:facet>
-
-					<p:column headerText="Id">
-						<h:outputText value="#{medicamento.id}" />
-					</p:column>
-					<p:column headerText="Nome">
-						<h:outputText value="#{medicamento.nome}" />
-					</p:column>
-
-					<p:column headerText="Apresentação">
-						<h:outputText value="#{medicamento.apresentacao}" />
-					</p:column>
-
-					<p:column headerText="Laboratório">
-						<h:outputText value="#{medicamento.laboratorio}" />
-					</p:column>
-
-
-					<p:column headerText="Preço">
-						<h:outputText value="#{medicamento.preco}">
-							<f:convertNumber type="currency" currencySymbol="R$" />
-						</h:outputText>
-					</p:column>
-
-
-					<p:column headerText="Registro MS">
-						<h:outputText value="#{medicamento.registro}" />
-					</p:column>
-
-					<p:column headerText="Ações">
-						<p:commandButton icon="ui-icon-pencil" update="@formMedicamento"
-							process="@this">
-							<f:setPropertyActionListener value="#{medicamento}"
-								target="#{medicamentoMB.medicamento}" />
-							</h:commandButton>
-
-							<p:commandButton action="#{medicamentoMB.excluir}"  icon="ui-icon-trash" update="tabela" process="@this">
-								<f:setPropertyActionListener value="#{medicamento}"
-									target="#{medicamentoMB.medicamento}" />
-								</h:commandButton>
-					</p:column>
-
-				</p:dataTable>
 
 
 			</p:panelGrid>
+
+			<p:dataTable id="tabela" var="medicamento" paginator="true" rows="5"
+				value="#{medicamentoMB.medicamentos}"
+				rowKey="#{medicamentoMB.medicamento.id}">
+				
+				<p:column headerText="Nome" width="200">
+					<h:outputText value="#{medicamento.nome}" />
+				</p:column>
+
+				<p:column headerText="Apresentação" width="200">
+					<h:outputText value="#{medicamento.apresentacao}" />
+				</p:column>
+
+				<p:column headerText="Laboratório" width="200">
+					<h:outputText value="#{medicamento.laboratorio}" />
+				</p:column>
+
+
+				<p:column headerText="Preço" width="200">
+					<h:outputText value="#{medicamento.preco}">
+						<f:convertNumber type="currency" currencySymbol="R$" />
+					</h:outputText>
+				</p:column>
+
+
+				<p:column headerText="Registro MS" width="150">
+					<h:outputText value="#{medicamento.registro}" />
+				</p:column>
+
+				<p:column headerText="Ações" width="100">
+					<p:commandButton icon="ui-icon-pencil" update="@form" process="@this">
+						<f:setPropertyActionListener value="#{medicamento}"
+							target="#{medicamentoMB.medicamento}" />
+					</p:commandButton>
+
+					<p:commandButton icon="ui-icon-trash" process="@this"
+						update="@form">
+						<f:setPropertyActionListener value=""
+							target="#{medicamentoMB.medicamento}" />
+					</p:commandButton>
+
+				</p:column>
+
+			</p:dataTable>
+
+
 		</h:form>
 
 	</ui:define>
+
+</ui:composition>

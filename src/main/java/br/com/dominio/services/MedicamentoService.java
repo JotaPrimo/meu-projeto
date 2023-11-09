@@ -17,10 +17,10 @@ public class MedicamentoService implements Serializable {
 	private DAO<Medicamento> dao;
 
 	public void salvar(Medicamento medicamento) throws NegocioException {
-		if(medicamento.getNome().length() < 3) {
+		if (medicamento.getNome().length() < 3) {
 			throw new NegocioException("Nome do medicamento não pode ter menos que 3 caracteres");
 		}
-		
+
 		dao.salvar(medicamento);
 	}
 
