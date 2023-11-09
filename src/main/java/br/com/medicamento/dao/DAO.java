@@ -1,8 +1,10 @@
 package br.com.medicamento.dao;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import br.com.medicamento.model.Base;
 
@@ -31,5 +33,26 @@ public class DAO<T extends Base> implements Serializable {
 			manager.getTransaction().rollback();
 		}
 	}
+
+	public void remover(Class<T> clazz, Long id) {
+		T t = buscarPorId(clazz, id);
+		try {
+			manager.getTransaction().begin();
+
+			manager.remove(t);
+
+			manager.getTransaction().commit();
+		} catch (Exception e) {
+			manager.getTransaction().rollback();
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<T> buscarTodos(String jpql) {
+		Query query = manager.createQuery(jpql);
+
+		return query.getResultList();
+	}
+	
 
 }
