@@ -8,7 +8,7 @@ public class ConnectionFactory {
 	
 	private static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("CursoPU");
 
-	private static EntityManager getEntityManager() {
+	public static EntityManager getEntityManager() {
 		return entityManagerFactory.createEntityManager();
 	}
 }
