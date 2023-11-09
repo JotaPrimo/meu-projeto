@@ -17,6 +17,10 @@ public class MedicamentoService implements Serializable {
 	private DAO<Medicamento> dao;
 
 	public void salvar(Medicamento medicamento) throws NegocioException {
+		if(medicamento.getNome().length() < 3) {
+			throw new NegocioException("Nome do medicamento não pode ter menos que 3 caracteres");
+		}
+		
 		dao.salvar(medicamento);
 	}
 
@@ -25,6 +29,7 @@ public class MedicamentoService implements Serializable {
 	}
 
 	public List<Medicamento> todosOsMedicamentos() {
+		// é só usar a classe no lugar da table
 		return dao.buscarTodos("select m from Medicamento m order by m.nome");
 	}
 
