@@ -1,0 +1,94 @@
+<ui:composition template="/WEB-INF/template/MenuGenerico.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="corpo">
+
+		<p:messages autoUpdate="true" />
+
+		<h:form id="formUsuario">
+
+
+			<p:panelGrid id="panelGridUser" columns="2">
+
+				<p:outputLabel value="Nome" for="nome" />
+				<p:inputText id="nome" placeholder="Nome"
+					value="#{usuarioMB.usuario.nome}" required="true" label="Nome"
+					requiredMessage="Preencha este campo" />
+
+
+				<p:outputLabel value="Email" for="email" />
+				<p:inputText id="email" value="#{usuarioMB.usuario.email}"
+					required="true" requiredMessage="Preencha este campo" />
+
+
+				<p:outputLabel value="Password" for="password" />
+				<h:inputSecret id="password" value="#{usuarioMB.usuario.password}"
+					required="true" requiredMessage="Preencha este campo" />
+
+
+				<p:outputLabel value="Idade" for="idade" />
+				<p:inputText id="idade" value="#{usuarioMB.usuario.idade}"
+					required="true" placeholder="Idade"
+					requiredMessage="Preencha este campo" />
+
+				<p:outputLabel />
+				<p:commandButton value="Salvar"
+					update="formUsuario datatableUsuario" action="#{usuarioMB.store}" />
+
+
+			</p:panelGrid>
+
+			<div class="card">
+				<p:dataTable id="datatableUsuario" var="usuario"
+					value="#{usuarioMB.listUsuarios}">
+					<p:column headerText="#ID">
+						<h:outputText value="#{usuario.id}" />
+					</p:column>
+
+					<p:column headerText="Nome">
+						<h:outputText value="#{usuario.nome}" />
+					</p:column>
+
+					<p:column headerText="Email">
+						<h:outputText value="#{usuario.email}" />
+					</p:column>
+
+					<p:column headerText="Idade">
+						<h:outputText value="#{usuario.idade}" />
+					</p:column>
+
+					<p:column headerText="Ações" width="100">
+						<p:commandButton icon="ui-icon-pencil" update="@form"
+							process="@this">
+							<f:setPropertyActionListener value="#{usuario}"
+								target="#{usuarioMB.usuario}" />
+						</p:commandButton>
+						
+						<p:commandButton action="#{usuarioMB.delete}" icon="ui-icon-trash" update="datatableUsuario"
+							process="@this">
+							<p:confirm header="Atenção" message="Tem Certeza ?"></p:confirm>
+							<f:setPropertyActionListener value="#{usuario}"
+								target="#{usuarioMB.usuario}" />
+						</p:commandButton>					
+					
+						
+						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+					        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+					    </p:confirmDialog> 
+						
+					</p:column>
+
+
+
+				</p:dataTable>
+			</div>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

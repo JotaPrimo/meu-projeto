@@ -48,9 +48,10 @@ public class MedicamentoMB implements Serializable {
 	}
 
 	public String excluir() {
-		try {
-			medicamentoService.remover(medicamento);
-
+		try {							
+			
+			medicamentoService.remover(medicamento);		
+			
 			medicamentos = medicamentoService.todosOsMedicamentos();
 
 			Message.info("Medicamento removido com sucesso");

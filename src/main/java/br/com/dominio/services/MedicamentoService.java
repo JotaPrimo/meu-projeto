@@ -24,7 +24,8 @@ public class MedicamentoService implements Serializable {
 		dao.salvar(medicamento);
 	}
 
-	public void remover(Medicamento medicamento) throws NegocioException {
+	public void remover(Medicamento medicamento) throws NegocioException {		
+		
 		dao.remover(Medicamento.class, medicamento.getId());
 	}
 

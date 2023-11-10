@@ -50,7 +50,7 @@ public class Medicamento implements Serializable, Base {
 	@Override
 	public Long getId() {
 		// TODO Auto-generated method stub
-		return null;
+		return id;
 	}
 	
 	public void setId(Long id) {
