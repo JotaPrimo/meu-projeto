@@ -54,5 +54,13 @@ public class DAO<T extends Base> implements Serializable {
 		return query.getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<T> filtrar(String jpql) {
+		System.out.println(jpql);
+		Query query = manager.createQuery(jpql);
+
+		return query.getResultList();
+	}
+	
 
 }
