@@ -2,12 +2,17 @@ package br.com.dominio.medicamento.controllers;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
 
 import br.com.dominio.services.UsuarioService;
 import br.com.dominio.utility.Message;
@@ -24,6 +29,9 @@ public class UsuarioMB implements Serializable {
 
 	@Inject
 	private Usuario usuario;
+	
+	@Inject
+	private Usuario usuarioSelecionado;
 
 	@Inject
 	private UsuarioService usuarioService;
@@ -72,6 +80,19 @@ public class UsuarioMB implements Serializable {
 		}
 	}
 	
+	public void abrirDialog() {
+		Map<String, Object> opcoes = new HashMap<String, Object>();
+		opcoes.put("modal", true); //impede usuario mexer nos outros componentes
+		opcoes.put("resizable", false);
+		opcoes.put("contentHeight", 470);
+		
+		RequestContext.getCurrentInstance().openDialog("/primefaces/Busca", opcoes, null);
+	}
+	
+	public void clienteSelecionado(SelectEvent event) {
+		usuarioSelecionado = (Usuario) event.getObject();
+	}
+	
 	public String pesquisar() {
 		
 		listUsuarios = usuarioService.filtrarUsuarios("nome", " LIKE ", busca);
@@ -98,5 +119,15 @@ public class UsuarioMB implements Serializable {
 	public void setBusca(String busca) {
 		this.busca = busca;
 	}
+
+	public Usuario getUsuarioSelecionado() {
+		return usuarioSelecionado;
+	}
+
+	public void setUsuarioSelecionado(Usuario usuarioSelecionado) {
+		this.usuarioSelecionado = usuarioSelecionado;
+	}
+	
+	
 
 }

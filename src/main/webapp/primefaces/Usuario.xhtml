@@ -11,8 +11,19 @@
 
 		<h:form id="formUsuario">
 
-
 			<p:panelGrid id="panelGridUser" columns="2">
+				<p:outputLabel for="cliente" value="Cliente" />
+				<h:panelGroup>					
+					<h:inputText readonly="#{facesContext.currentPhaseId.name eq 'RENDER_RESPONSE'}" value="#{usuarioMB.usuarioSelecionado.nome}" id="cliente" />
+					
+					<p:commandButton process="@this" update="@none" 
+						action="#{usuarioMB.abrirDialog}" 
+						icon="ui-icon-search" title="Pesquisar">
+						<p:ajax event="dialogReturn" listener="#{usuarioMB.clienteSelecionado}" process="@this" update="cliente" />
+							<p:resetInput target="cliente"></p:resetInput>
+						</p:commandButton>
+				</h:panelGroup>
+
 
 				<p:outputLabel value="Nome" for="nome" />
 				<p:inputText id="nome" placeholder="Nome"
@@ -42,8 +53,7 @@
 
 			</p:panelGrid>
 
-			<div class="card">	
-							
+			<div class="card">								
 				<p:dataTable id="datatableUsuario" var="usuario"
 					value="#{usuarioMB.listUsuarios}">
 					<p:column headerText="#ID">
